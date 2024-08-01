@@ -90,3 +90,44 @@ Python and SQLite based solution to Task Management Pre-Interview Coding Exercis
       }
    ]
    ```
+
+### Get Task by ID
+- **GET** `/tasks/{task_id}`
+- **Response Code Example:** `200 OK`
+- **Response Body Example:**
+   ```json
+   {
+      "title": "Task Title",
+      "description": "Task Description",
+      "status": "Pending",
+      "id": 1,
+      "created_at": "2024-08-01T16:47:59.877894",
+      "updated_at": "2024-08-01T16:47:59.877894"
+   }
+   ```
+
+### Update Task by ID
+- **PUT** `/tasks/{task_id}`
+- **Request Body Example:**
+  ```json
+   {
+      "title": "New Title",
+      "description": "New Description",
+      "status": "Completed"
+   }
+- **Response Code Example:** `200 OK`
+- **Response Body Example:**
+   ```json
+   {
+      "title": "New Title",
+      "description": "New Description",
+      "status": "Completed",
+      "id": 1,
+      "created_at": "2024-08-01T16:47:59.877894",
+      "updated_at": "2024-08-01T16:53:17.628995"
+   }
+   ```
+
+### Delete Task by ID
+- **DELETE** `/tasks/{task_id}`
+- **Response Code Example:** `204 No Content`
