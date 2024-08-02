@@ -17,6 +17,13 @@ def get_db():
     finally:
         db.close()
 
+# Check to see if the task status string is within the TaskStatus enum
+def check_task_status(status: str):
+    try:
+        models.TaskStatus(status)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid task status: {status}")
+
 @app.post("/tasks/", status_code=status.HTTP_201_CREATED, response_model=schemas.TaskWithId)
 def create_task(task: schemas.Task, db: Session = Depends(get_db)):
     """
@@ -24,6 +31,7 @@ def create_task(task: schemas.Task, db: Session = Depends(get_db)):
     - task: Task object that needs to be added to the database.
     - return: Returns the newly created task with ID.
     """
+    check_task_status(task.status)
     return crud.create_task(db=db, task=task)
 
 @app.get("/tasks/", response_model=List[schemas.TaskWithId])
@@ -57,10 +65,7 @@ def update_task_by_id(task_id: int, task: schemas.Task, db: Session = Depends(ge
     - task: Updated task object.
     - return: Updated task object if successful. If the task status is invalid or task not found, raises an error.
     """
-    try:
-        models.TaskStatus(task.status)
-    except ValueError:
-        raise HTTPException(status_code=400, detail=f"Invalid task status: {task.status}")
+    check_task_status(task.status)
     db_task = crud.update_task_by_id(db, task_id, task)
     if db_task is None:
         raise HTTPException(status_code=404, detail="Task not found")
