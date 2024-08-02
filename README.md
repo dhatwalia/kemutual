@@ -9,6 +9,7 @@ Python and SQLite based solution to Task Management Pre-Interview Coding Exercis
   - [Installation](#installation)
   - [Usage](#usage)
   - [API End Point](#api-end-point)
+  - [Testing](#testing)
 
 ## Installation
 
@@ -131,3 +132,9 @@ Python and SQLite based solution to Task Management Pre-Interview Coding Exercis
 ### Delete Task by ID
 - **DELETE** `/tasks/{task_id}`
 - **Response Code Example:** `204 No Content`
+
+## Testing
+**Run tests:**
+```sh
+python -m unittest
+```
