@@ -32,15 +32,20 @@ Python and SQLite based solution to Task Management Pre-Interview Coding Exercis
 
 ## Usage
 
-1. **Start the server:**
+1. **Run the virtual environment:**
+   ```sh
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   ```
+
+2. **Start the server:**
    ```sh
    uvicorn app.main:app --reload
    ```
 
-2. **Access the application:**
+3. **Access the application:**
    Open browser and navigate to `http://127.0.0.1:8000/tasks`.
 
-3. **Interacting with the API:**
+4. **Interacting with the API:**
    - Use tools like Postman or cURL to interact with the API endpoints.
    - The API documentation is available at `http://127.0.0.1:8000/docs` (Swagger UI) or `http://127.0.0.1:8000/redoc` (ReDoc).
 
@@ -134,7 +139,22 @@ Python and SQLite based solution to Task Management Pre-Interview Coding Exercis
 - **Response Code Example:** `204 No Content`
 
 ## Testing
-**Run tests:**
-```sh
-python -m unittest
-```
+1. **Run the virtual environment:**
+   ```sh
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   ```
+
+2. **Start the server:**
+   ```sh
+   uvicorn app.main:app --reload
+   ```
+
+3. **In another session, run the virtual environment:**
+   ```sh
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   ```
+
+4. **Run tests:**
+   ```sh
+   python -m unittest
+   ```
